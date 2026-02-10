@@ -259,15 +259,9 @@
     <div class="leaf fixed inset-0 overflow-hidden pointer-events-none z-50" id="leafContainer"></div>
 
     <!-- Music Control -->
-    <button id="musicBtn"
+    <button id="music-toggle"
         class="fixed bottom-5 right-5 z-50 w-12 h-12 bg-rustic-olive/90 backdrop-blur-sm rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-transform hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M9 18V5l12-2v13"></path>
-            <circle cx="6" cy="18" r="3"></circle>
-            <circle cx="18" cy="16" r="3"></circle>
-        </svg>
+        <i id="music-icon" class="fas fa-play silver-gradient-text text-xl"></i>
     </button>
 
     <!-- Corner Ornaments (Converted to SVG for reliability) -->
@@ -314,7 +308,7 @@
             <h1 class="font-script text-6xl md:text-8xl mb-6 drop-shadow-2xl">Romeo & Juliet</h1>
             <p class="font-serif italic text-xl mb-8 opacity-90">Kepada Yth. Bapak/Ibu/Saudara/i</p>
 
-            <button id="openBtn"
+            <button id="open-btn"
                 class="group relative px-8 py-3 bg-rustic-olive text-white font-serif uppercase tracking-widest text-sm hover:bg-white hover:text-rustic-olive transition-all duration-500 rounded-sm shadow-2xl border border-white/20">
                 <span class="relative z-10 flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -329,7 +323,7 @@
     </section>
 
     <!-- MAIN CONTENT (Initially Hidden) -->
-    <main id="mainContent" class="opacity-0 transition-opacity duration-1000 relative z-10 hidden">
+    <main id="main-content" class="opacity-0 transition-opacity duration-1000 relative z-10 hidden">
 
         <!-- HERO SECTION -->
         <section id="hero"
@@ -601,7 +595,7 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="src/main.js"></script>
+    <script src="main.js"></script>
 
     <!-- Lightbox Script -->
     <script>

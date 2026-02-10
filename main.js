@@ -83,8 +83,8 @@ openBtn.addEventListener('click', () => {
         musicToggle.classList.remove('hidden');
 
         setTimeout(() => {
-            mainContent.classList.add('opacity-100');
-            mainContent.classList.remove('opacity-0');
+            mainContent.style.opacity = '1';
+            console.log('Main content should now be visible');
         }, 100);
     }, 1500);
 });
