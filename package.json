@@ -1,0 +1,13 @@
+{
+    "name": "undangan-modern-luxury",
+    "version": "1.0.0",
+    "description": "Modern Luxury Black & Gold Wedding Invitation",
+    "scripts": {
+        "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+        "watch": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+    },
+    "devDependencies": {
+        "@tailwindcss/cli": "^4.1.18",
+        "tailwindcss": "^4.1.18"
+    }
+}

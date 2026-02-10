@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Aria & Elara | Modern Luxury</title>
+    <link rel="stylesheet" href="dist/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        .reveal {
+            opacity: 0;
+            transition: all 1.2s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .luxe-reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            filter: blur(5px);
+            transition: all 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .luxe-reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1.02);
+            filter: blur(0);
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased">
+
+    <!-- Overlay / Opening -->
+    <div id="overlay"
+        class="fixed inset-0 z-[1000] bg-obsidian-deep flex items-center justify-center transition-all duration-[2000ms] ease-expo overflow-hidden">
+
+        <!-- Sparkle Dust برای Overlay -->
+        <div id="sparkle-dust-overlay" class="absolute inset-0 pointer-events-none"></div>
+
+        <!-- Background Decor -->
+        <div
+            class="art-deco-motif top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[3] opacity-5 luxe-reveal active">
+        </div>
+
+        <!-- Floating Leaves -->
+        <div class="silver-leaf top-20 left-[10%] opacity-30 animate-float-luxe" style="animation-delay: 0s;"></div>
+        <div class="silver-leaf bottom-20 right-[10%] opacity-30 animate-float-luxe rotate-[180deg]"
+            style="animation-delay: -4s;"></div>
+
+        <div
+            class="text-center p-12 glass-dark silver-border max-w-lg w-full mx-6 relative overflow-hidden group luxe-reveal active">
+            <div class="absolute inset-0 bg-gradient-to-br from-luxury-silver/5 to-transparent"></div>
+
+            <div class="relative z-10">
+                <p class="font-display tracking-[0.5em] text-luxury-silver-bright text-xs uppercase mb-8">Wedding
+                    Invitation</p>
+                <h1 class="font-display text-5xl md:text-7xl mb-8 silver-gradient-text">A <span
+                        class="text-3xl">&</span>
+                    E</h1>
+                <div class="deco-line w-full mb-8"></div>
+                <p class="font-serif italic text-lg text-white/60 mb-12">"Satu cinta, satu takdir, selamanya."</p>
+
+                <button id="open-btn"
+                    class="group relative px-12 py-4 bg-transparent silver-border uppercase tracking-[0.3em] text-xs font-bold text-luxury-silver-bright hover:text-obsidian-deep transition-colors duration-500 overflow-hidden">
+                    <span class="relative z-10">Buka Undangan</span>
+                    <div
+                        class="absolute inset-0 bg-luxury-silver-bright translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="hidden opacity-0 transition-opacity duration-[2000ms]">
+
+        <!-- Sparkle Dust Container -->
+        <div id="sparkle-dust" class="fixed inset-0 pointer-events-none z-[1500]"></div>
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+            <div
+                class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/dark-leather.png')]">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-obsidian-deep/50 to-obsidian-deep"></div>
+
+            <!-- Art-Deco Motifs -->
+            <div class="art-deco-motif top-20 left-20 opacity-20 luxe-reveal active"></div>
+            <div class="art-deco-motif bottom-20 right-20 opacity-20 luxe-reveal active"></div>
+
+            <div class="relative z-10 text-center px-6">
+                <div class="mb-6 animate-silver-glow inline-block luxe-reveal active" style="transition-delay: 200ms;">
+                    <div class="w-20 h-20 border-2 border-luxury-silver rotate-45 flex items-center justify-center">
+                        <span class="font-display text-2xl silver-gradient-text -rotate-45">A&E</span>
+                    </div>
+                </div>
+                <h2 class="font-display text-7xl md:text-9xl tracking-tighter text-luxury-silver mb-4 luxe-reveal active"
+                    style="transition-delay: 400ms;">
+                    Aria <span class="font-serif italic text-5xl md:text-7xl text-white/20">&</span> Elara
+                </h2>
+                <div class="deco-line w-40 mx-auto mb-6 luxe-reveal active" style="transition-delay: 600ms;"></div>
+                <p class="font-sans tracking-[1em] text-[0.6rem] uppercase text-luxury-silver-bright luxe-reveal active"
+                    style="transition-delay: 800ms;">
+                    20 . 09 . 2026
+                </p>
+            </div>
+
+            <!-- Floating Decorative Elements -->
+            <div class="absolute top-10 left-10 w-40 h-40 border-l border-t border-luxury-silver/20 luxe-reveal active">
+            </div>
+            <div
+                class="absolute bottom-10 right-10 w-40 h-40 border-r border-b border-luxury-silver/20 luxe-reveal active">
+            </div>
+
+            <!-- Minimalist silver Leaves -->
+            <div class="silver-leaf top-40 right-[15%] rotate-12 luxe-reveal active" style="transition-delay: 1000ms;">
+            </div>
+            <div class="silver-leaf bottom-40 left-[15%] -rotate-12 luxe-reveal active"
+                style="transition-delay: 1200ms;">
+            </div>
+        </section>
+
+        <!-- Couple Section -->
+        <section class="py-32 px-6 bg-obsidian-surface relative overflow-hidden">
+            <!-- Art-Deco Decor -->
+            <div class="art-deco-motif top-[-50px] left-[-50px] opacity-10 luxe-reveal"></div>
+
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+
+                <!-- Groom -->
+                <div class="luxe-reveal">
+                    <div class="relative group">
+                        <!-- Floral/Leaf Accent -->
+                        <div class="silver-leaf top-[-40px] left-[-40px] opacity-40 rotate-[-15deg] luxe-reveal"
+                            style="transition-delay: 400ms;"></div>
+
+                        <div class="aspect-[3/4] overflow-hidden silver-border luxe-shadow">
+                            <img src="assets/pria.jpg" alt="Groom"
+                                class="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 scale-110 group-hover:scale-100">
+                        </div>
+                        <div class="absolute -bottom-10 -right-10 bg-obsidian-deep p-8 silver-border luxe-shadow z-20">
+                            <h3 class="font-display text-3xl silver-gradient-text mb-2">Aria Putra</h3>
+                            <p class="font-serif italic text-sm text-white/40 uppercase tracking-widest">Putra Pertama
+                                dari</p>
+                            <p class="text-white/60 font-light mt-4 font-sans">Bp. Kusuma & Ibu Saraswati</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bride -->
+                <div class="luxe-reveal" style="transition-delay: 300ms;">
+                    <div class="relative group">
+                        <!-- Floral/Leaf Accent -->
+                        <div class="silver-leaf bottom-[-40px] right-[-40px] opacity-40 rotate-[165deg] luxe-reveal"
+                            style="transition-delay: 700ms;"></div>
+
+                        <div class="aspect-[3/4] overflow-hidden silver-border luxe-shadow md:mt-24">
+                            <img src="assets/wanita.jpg" alt="Bride"
+                                class="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 scale-110 group-hover:scale-100">
+                        </div>
+                        <div class="absolute -top-10 -left-10 bg-obsidian-deep p-8 silver-border luxe-shadow z-20">
+                            <h3 class="font-display text-3xl silver-gradient-text mb-2">Elara Putri</h3>
+                            <p class="font-serif italic text-sm text-white/40 uppercase tracking-widest">Putri Bungsu
+                                dari</p>
+                            <p class="text-white/60 font-light mt-4 font-sans">Bp. Wijaya & Ibu Kartika</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Dynamic Countdown -->
+        <section class="py-24 bg-obsidian-deep border-y border-luxury-silver/10">
+            <div class="max-w-4xl mx-auto text-center px-6">
+                <h3 class="font-display text-2xl silver-gradient-text mb-12 uppercase tracking-widest">Saving The Date
+                </h3>
+                <div class="grid grid-cols-4 gap-2 md:gap-8">
+                    <div class="bg-obsidian-surface p-3 md:p-6 silver-border luxe-shadow">
+                        <span id="days" class="block text-3xl md:text-6xl font-display silver-gradient-text">00</span>
+                        <p class="text-[0.5rem] md:text-[0.6rem] uppercase tracking-widest mt-2">Hari</p>
+                    </div>
+                    <div class="bg-obsidian-surface p-3 md:p-6 silver-border luxe-shadow">
+                        <span id="hours" class="block text-3xl md:text-6xl font-display silver-gradient-text">00</span>
+                        <p class="text-[0.5rem] md:text-[0.6rem] uppercase tracking-widest mt-2">Jam</p>
+                    </div>
+                    <div class="bg-obsidian-surface p-3 md:p-6 silver-border luxe-shadow">
+                        <span id="minutes"
+                            class="block text-3xl md:text-6xl font-display silver-gradient-text">00</span>
+                        <p class="text-[0.5rem] md:text-[0.6rem] uppercase tracking-widest mt-2">Menit</p>
+                    </div>
+                    <div class="bg-obsidian-surface p-3 md:p-6 silver-border luxe-shadow">
+                        <span id="seconds"
+                            class="block text-3xl md:text-6xl font-display silver-gradient-text">00</span>
+                        <p class="text-[0.5rem] md:text-[0.6rem] uppercase tracking-widest mt-2">Detik</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Section -->
+        <section class="py-32 px-6 bg-obsidian-deep relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="art-deco-motif bottom-[-40px] left-1/2 -translate-x-1/2 opacity-5 scale-150 luxe-reveal"></div>
+
+            <div class="max-w-5xl mx-auto text-center relative z-10">
+                <h2 class="font-display text-4xl silver-gradient-text mb-20 uppercase tracking-[0.4em] luxe-reveal">The
+                    Celebration</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Akad -->
+                    <div class="glass-dark p-12 silver-border luxe-reveal">
+                        <i class="fas fa-ring text-luxury-silver text-4xl mb-8 animate-silver-glow"></i>
+                        <h3 class="font-display text-2xl text-luxury-silver-bright mb-4 text-center">Akad Nikah</h3>
+                        <div class="deco-line w-20 mx-auto mb-8"></div>
+                        <p class="font-serif italic text-white/80 mb-6 font-sans">Minggu, 20 September 2026</p>
+                        <p class="text-white/60 font-light mb-8 font-sans">Pukul 09.00 - 11.00 WIB</p>
+                        <p class="font-serif text-lg silver-gradient-text mb-8">Masjid Raya Medan</p>
+                        <button
+                            class="px-8 py-3 silver-border text-xs uppercase tracking-widest text-luxury-silver hover:bg-luxury-silver hover:text-obsidian-deep transition-all font-sans">Google
+                            Maps</button>
+                    </div>
+
+                    <!-- Resepsi -->
+                    <div class="glass-dark p-12 silver-border luxe-reveal" style="transition-delay: 200ms;">
+                        <i class="fas fa-wine-glass text-luxury-silver text-4xl mb-8 animate-silver-glow"></i>
+                        <h3 class="font-display text-2xl text-luxury-silver-bright mb-4 text-center">Resepsi</h3>
+                        <div class="deco-line w-20 mx-auto mb-8"></div>
+                        <p class="font-serif italic text-white/80 mb-6 font-sans">Minggu, 20 September 2026</p>
+                        <p class="text-white/60 font-light mb-8 font-sans">Pukul 12.00 - Selesai</p>
+                        <p class="font-serif text-lg silver-gradient-text mb-8">Grand Hotel Medan</p>
+                        <button
+                            class="px-8 py-3 silver-border text-xs uppercase tracking-widest text-luxury-silver hover:bg-luxury-silver hover:text-obsidian-deep transition-all font-sans">Google
+                            Maps</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="py-32 px-6 bg-obsidian-surface relative overflow-hidden">
+            <!-- Decorative silver Leaf -->
+            <div class="silver-leaf top-0 left-0 opacity-20 rotate-[-45deg] luxe-reveal"></div>
+
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-24">
+                    <h2 class="font-display text-4xl silver-gradient-text uppercase tracking-[0.4em] luxe-reveal">
+                        Captured
+                        Moments</h2>
+                    <div class="deco-line w-40 mx-auto mt-4 luxe-reveal"></div>
+                </div>
+
+                <div class="grid grid-cols-12 gap-6">
+                    <div class="col-span-12 md:col-span-8 luxe-reveal">
+                        <div class="aspect-video overflow-hidden silver-border luxe-shadow group">
+                            <img src="assets/galery1.jpg"
+                                class="w-full h-full object-cover brightness-50 group-hover:brightness-100 transition-all duration-[2000ms] scale-110 group-hover:scale-100">
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-4 luxe-reveal" style="transition-delay: 200ms;">
+                        <div class="aspect-[3/4] overflow-hidden silver-border luxe-shadow group md:mt-20">
+                            <img src="assets/galery2.jpg"
+                                class="w-full h-full object-cover brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-[2000ms] scale-110 group-hover:scale-100">
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-4 luxe-reveal">
+                        <div class="aspect-square overflow-hidden silver-border luxe-shadow group">
+                            <img src="assets/galery3.jpg"
+                                class="w-full h-full object-cover brightness-50 group-hover:brightness-100 transition-all duration-[2000ms] scale-110 group-hover:scale-100">
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-8 luxe-reveal" style="transition-delay: 200ms;">
+                        <div class="aspect-[21/9] overflow-hidden silver-border luxe-shadow group">
+                            <img src="assets/galery5.jpg"
+                                class="w-full h-full object-cover brightness-50 group-hover:brightness-100 transition-all duration-[2000ms] scale-110 group-hover:scale-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-24 bg-obsidian-deep text-center border-t border-luxury-silver/20">
+            <h2 class="font-display text-4xl silver-gradient-text mb-8">Aria <span class="text-2xl">&</span> Elara</h2>
+            <div class="flex justify-center gap-8 text-luxury-silver/30 text-2xl mb-12">
+                <i class="fas fa-crown"></i>
+                <i class="fas fa-heart scale-150 text-luxury-silver/20"></i>
+                <i class="fas fa-crown"></i>
+            </div>
+            <p class="font-display tracking-[1em] text-[0.6rem] uppercase text-white/20">Magnificence in Every Detail
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- Music Control -->
+    <div id="music-toggle" class="fixed bottom-10 right-10 z-[2000] hidden">
+        <button
+            class="w-16 h-16 bg-obsidian-surface silver-border rounded-full flex items-center justify-center luxe-shadow hover:scale-110 transition-transform">
+            <i id="music-icon" class="fas fa-play silver-gradient-text text-xl"></i>
+        </button>
+    </div>
+
+    <!-- SoundCloud Hidden Widget -->
+    <iframe id="sc-widget" style="position: absolute; left: -9999px;"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1922442475&auto_play=false"></iframe>
+
+    <script src="https://w.soundcloud.com/player/api.js"></script>
+    <!-- Lightbox Modal -->
+    <div id="lightbox"
+        class="fixed inset-0 z-[2000] bg-black/95 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-500 backdrop-blur-xl">
+        <button id="close-lightbox"
+            class="absolute top-8 right-8 md:top-10 md:right-10 w-12 h-12 flex items-center justify-center rounded-full bg-black/50 border border-luxury-silver/30 text-luxury-silver text-2xl md:text-4xl hover:scale-110 transition-transform z-[2100]">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="max-w-5xl w-full h-full flex items-center justify-center">
+            <img id="lightbox-img" src=""
+                class="max-w-full max-h-full object-contain silver-border luxe-shadow transition-transform duration-700 scale-90">
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
