@@ -1,147 +1,121 @@
-// DOM Elements
-const overlay = document.getElementById('overlay');
-const mainContent = document.getElementById('main-content');
-const openBtn = document.getElementById('open-btn');
-const scIframe = document.getElementById('sc-widget');
-const musicToggle = document.getElementById('music-toggle');
-const musicIcon = document.getElementById('music-icon');
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 DOM Loaded - Starting initialization...');
 
-// Initialize SoundCloud
-let widget;
+    // 1. Initialize AOS
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            once: false,
+            offset: 50,
+            duration: 1200,
+            easing: 'ease-out-cubic',
+        });
+        console.log('✅ AOS initialized');
+    }
 
-// Sparkle Dust System
-const createSparkle = (containerId) => {
-    const container = document.getElementById(containerId);
-    if (!container) return;
+    // 2. Elements
+    const openBtn = document.getElementById('open-btn');
+    const overlay = document.getElementById('overlay');
+    const mainContent = document.getElementById('main-content');
+    const musicToggle = document.getElementById('music-toggle');
+    const leafContainer = document.getElementById('leafContainer');
 
-    const sparkle = document.createElement('div');
-    sparkle.className = 'sparkle-particle animate-sparkle';
+    // 3. Open Invitation Logic
+    if (openBtn && overlay && mainContent) {
+        openBtn.addEventListener('click', () => {
+            console.log('🎯 Open button clicked');
 
-    // Very fine randomization
-    const size = Math.random() * 2 + 1;
-    sparkle.style.width = `${size}px`;
-    sparkle.style.height = `${size}px`;
-    sparkle.style.left = `${Math.random() * 100}vw`;
-    sparkle.style.top = `${Math.random() * 100}vh`;
-    sparkle.style.animationDuration = `${Math.random() * 3 + 2}s`;
-    sparkle.style.opacity = Math.random() * 0.5 + 0.2;
+            // Slide up overlay
+            overlay.style.transform = 'translateY(-100%)';
 
-    container.appendChild(sparkle);
+            // Show Main Content
+            mainContent.classList.remove('hidden');
+            setTimeout(() => {
+                mainContent.style.opacity = '1';
+                console.log('👁️ Main content visible');
+            }, 100);
 
-    setTimeout(() => sparkle.remove(), 4000);
-};
+            // Play Music
+            if (musicToggle) {
+                musicToggle.classList.remove('hidden');
+                // Trigger click to start if it has music logic or manual play
+            }
 
-// Start Sparkles for multiple containers
-setInterval(() => {
-    createSparkle('sparkle-dust');
-    createSparkle('sparkle-dust-overlay');
-}, 200);
-
-try {
-    if (typeof SC !== 'undefined') {
-        widget = SC.Widget(scIframe);
-        widget.bind(SC.Widget.Events.READY, () => {
-            console.log('Premium Audio Ready');
-            widget.setVolume(70);
+            // Refresh AOS
+            setTimeout(() => {
+                if (typeof AOS !== 'undefined') {
+                    AOS.refresh();
+                }
+            }, 600);
         });
     }
-} catch (e) { console.error('Audio Init Failed', e); }
 
-let isPlaying = false;
+    // 4. Falling Leaves Effect
+    function createLeaf() {
+        if (!leafContainer) return;
 
-// Reveal Animations on Scroll
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            // Support for both legacy .reveal and new .luxe-reveal
-            if (entry.target.classList.contains('reveal')) {
-                entry.target.style.transform = 'translateY(0)';
-            }
-        }
-    });
-}, { threshold: 0.1 });
+        const leafDiv = document.createElement('div');
+        const size = Math.random() * 20 + 20;
 
-document.querySelectorAll('.reveal, .luxe-reveal').forEach(el => revealObserver.observe(el));
+        leafDiv.style.width = `${size}px`;
+        leafDiv.style.height = `${size}px`;
+        leafDiv.style.position = 'absolute';
+        leafDiv.style.left = Math.random() * 100 + 'vw';
+        leafDiv.style.top = '-50px';
+        leafDiv.style.opacity = Math.random() * 0.4 + 0.3;
+        leafDiv.style.zIndex = '9999';
+        leafDiv.style.pointerEvents = 'none';
+        leafDiv.style.color = '#556B2F';
 
-// Open Invitation Logic
-openBtn.addEventListener('click', () => {
-    // 1. Audio Play
-    if (widget) {
-        widget.play();
-        isPlaying = true;
-        musicIcon.className = 'fas fa-pause gold-gradient-text text-xl';
-    }
+        leafDiv.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%">
+                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+            </svg>
+        `;
 
-    // 2. Animate Opening
-    overlay.style.opacity = '0';
-    overlay.style.transform = 'scale(1.1) rotateX(10deg)';
+        const duration = Math.random() * 8 + 7;
+        leafDiv.style.transition = `top ${duration}s linear, transform ${duration}s ease-in-out`;
 
-    setTimeout(() => {
-        overlay.classList.add('hidden');
-        mainContent.classList.remove('hidden');
-        musicToggle.classList.remove('hidden');
+        leafContainer.appendChild(leafDiv);
 
         setTimeout(() => {
-            mainContent.style.opacity = '1';
-            console.log('Main content should now be visible');
-        }, 100);
-    }, 1500);
-});
+            leafDiv.style.top = '110vh';
+            leafDiv.style.transform = `rotate(${Math.random() * 720}deg) translateX(${Math.random() * 100 - 50}px)`;
+        }, 50);
 
-// Music Toggle Click
-musicToggle.addEventListener('click', () => {
-    if (isPlaying) {
-        widget.pause();
-        musicIcon.className = 'fas fa-play gold-gradient-text text-xl';
-    } else {
-        widget.play();
-        musicIcon.className = 'fas fa-pause gold-gradient-text text-xl';
+        setTimeout(() => {
+            leafDiv.remove();
+        }, duration * 1000);
     }
-    isPlaying = !isPlaying;
-});
 
-// Countdown Logic
-const targetDate = new Date("Sep 20, 2026 09:00:00").getTime();
-setInterval(() => {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-    if (distance < 0) return;
+    setInterval(createLeaf, 2000);
 
-    document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-    document.getElementById('hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-    document.getElementById('minutes').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-    document.getElementById('seconds').innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-}, 1000);
+    // 5. Countdown Timer
+    const weddingDate = new Date("Jan 1, 2026 08:00:00").getTime();
+    const daysElem = document.getElementById('days');
+    const hoursElem = document.getElementById('hours');
+    const minutesElem = document.getElementById('minutes');
 
-// Lightbox Logic
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const closeLightbox = document.getElementById('close-lightbox');
+    function updateCountdown() {
+        if (!daysElem) return;
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
 
-document.querySelectorAll('img').forEach(img => {
-    if (!img.closest('#overlay') && !img.closest('#lightbox')) {
-        img.classList.add('cursor-zoom-in');
-        img.addEventListener('click', () => {
-            lightboxImg.src = img.src;
-            lightbox.classList.remove('hidden');
-            setTimeout(() => lightbox.classList.add('active'), 10);
-        });
-    }
-});
-
-if (closeLightbox) {
-    closeLightbox.addEventListener('click', () => {
-        lightbox.classList.remove('active');
-        setTimeout(() => lightbox.classList.add('hidden'), 500);
-    });
-}
-
-if (lightbox) {
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-            lightbox.classList.remove('active');
-            setTimeout(() => lightbox.classList.add('hidden'), 500);
+        if (distance < 0) {
+            daysElem.innerText = "00";
+            hoursElem.innerText = "00";
+            minutesElem.innerText = "00";
+            return;
         }
-    });
-}
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+        daysElem.innerText = days.toString().padStart(2, '0');
+        hoursElem.innerText = hours.toString().padStart(2, '0');
+        minutesElem.innerText = minutes.toString().padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+});
